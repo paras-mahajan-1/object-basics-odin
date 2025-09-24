@@ -192,26 +192,167 @@
 
 // console.log(getAverageAge(arr));
 
-let users = [
-  {id: 'john', name: "John Smith", age: 20},
-  {id: 'ann', name: "Ann Smith", age: 24},
-  {id: 'pete', name: "Pete Peterson", age: 31},
+// let users = [
+//   {id: 'john', name: "John Smith", age: 20},
+//   {id: 'ann', name: "Ann Smith", age: 24},
+//   {id: 'pete', name: "Pete Peterson", age: 31},
+// ];
+// function usersById(users) {
+//     let newObj = {};
+//     for (let person of users) {
+//         newObj[person.id] = person;
+//     };
+//     return newObj;
+// };
+// let usersById2 = usersById(users);
+// console.log(usersById2);
+// let emptyObj = {}
+// let xyz = users.reduce((obj, user) => {obj[user.id] = user;
+//     return obj
+// }, {});
+
+// console.log(xyz)
+
+// function newVar() {
+//     let x = arguments[0];
+//     let y = arguments[1];
+//     console.log(x, y);
+// }
+
+// newVar(1, 2,);
+
+// const factorial = function() {
+	//   let counterVar = 1;
+	// for (let i = arguments[0]; i >= 2; i--) {
+  //   counterVar *= i;
+  // };
+  // return counterVar;
+
+//   let result = arguments[0].reduce((prev, user) => prev * user, 1);
+//   return result;
+// };
+
+// factorial([])
+
+// function palindromes() {
+// let string = arguments[0];
+//     if (string.includes(" ")) {
+//         string = string.split(" ").join("");
+//     };
+//     if (string.includes(".")) {
+//         string = string.split(".").join("");
+//     };
+//     if (string.includes(",")) {
+//         string = string.split(",").join("");
+//     };
+//     if (string.includes("!")) {
+//         string = string.split("!").join("");
+//     };
+//     let stringArr = string.split("").map((item) => item.toLowerCase());
+//     let newStringArr = [];
+//     for (let i = 0; i < stringArr.length; i++) {
+//         newStringArr.unshift(stringArr[i]);
+//     }
+//     if (stringArr.join("") === newStringArr.join("")) {
+//         return true;
+//     } else {
+//         return false;
+//     };
+    // return (stringArr)
+    // return (stringArr + " ----------- "+newStringArr)
+
+// };
+
+// console.log(palindromes("Animal loots foliated detail of stool lamina."));
+
+// const fibonacci = function() {
+//     let number = arguments[0];
+//     let prevNumber = 0;
+//     let result;
+//     for (let i = 1; i <= number; i++) {
+//         prevNumber += i;
+//         if ( i === number) {
+//             return 
+//         }
+//     };
+//     return prevNumber;
+// };
+// console.log(fibonacci(4));
+
+// function fibbinaci() {
+//     let number = arguments[0];
+//     let arr = [];
+//     if (number == 0) return 0;
+//     if (number < 0) return "OOPS";
+//     if (typeof(number) == 'string') {
+//         number = +number;
+//     }
+//     arr.push(1);
+//     for (let i = 2; i <= number;  i++) {
+//         let lastArrValue = arr[arr.length-1];
+//         let lastSecondArrValue = arr[arr.length-2]
+//         if (lastSecondArrValue === undefined) {
+//             lastSecondArrValue = 0;
+//         };
+
+//         arr.push(lastArrValue + lastSecondArrValue);
+//     };
+//     return arr[arr.length-1]
+
+// }
+
+// console.log(fibbinaci("6"))
+
+// const books = [
+//   {
+//     title: 'Book',
+//     author: 'Name'
+//   },
+//   {
+//     title: 'Book2',
+//     author: 'Name2'
+//   }
+// ];
+
+// let x = books.map((book) => {
+//     return book.title
+// });
+
+// console.log(x)
+const people = [
+      {
+        name: "Carly",
+        yearOfBirth: 2018,
+      },
+      {
+        name: "Ray",
+        yearOfBirth: 1962,
+        yearOfDeath: 2011,
+      },
+      {
+        name: "Jane",
+        yearOfBirth: 1912,
+        yearOfDeath: 1941,
+      },
 ];
-function usersById(users) {
-    let newObj = {};
-    for (let person of users) {
-        newObj[person.id] = person;
+function getOldest() {
+    let arr = arguments[0];
+    
+    for (let i = 0; i < arr.length; i++) {
+        let obj = arr[i];
+        if (!(('yearOfDeath') in obj)) {
+            obj.yearOfDeath = +(Date().toString().split(" ")[3]);
+        };
     };
+
+    let x = arr.sort((a,b) => -(a.yearOfDeath-a.yearOfBirth) + (b.yearOfDeath-b.yearOfBirth))
+    for (let i = 0; i < x.length; i++) {
+        x.pop()
+    } 
+    let newObj = arr[0];
     return newObj;
-};
-let usersById2 = usersById(users);
-console.log(usersById2);
-let emptyObj = {}
-let xyz = users.reduce((obj, user) => {obj[user.id] = user;
-    return obj
-}, {});
+}
 
-console.log(xyz)
+// console.log(Date().toString().split(" ")[3])
 
-
-
+console.log(getOldest(people).name)
